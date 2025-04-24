@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row">
+  
+      <div class="col-6">
+        <img [src]="productInfo.images" [alt]="productInfo.title" class="img-fluid img m-2">
+      </div>
+      <div class="col-6">
+  
+        <h2 class="card-title font-weight-bold">{{productInfo.title}} </h2>
+        <p class="text-warning mb-1"> <small
+            class="text-muted font-weight-bold">★{{productInfo.rating}}({{productInfo.reviews_count}})</small>
+        </p>
+        <h3 class="text-primary ">{{productInfo.total_price}}</h3>
+  
+        <div class="row " *ngFor=" let specifiction of productInfo.product_description">
+          <div class="col-md-1"><mat-icon style="color: greenyellow;" class="bgcolor">check</mat-icon></div>
+          <div class="col-md-11">{{specifiction}}</div>
+        </div>
+        <div class="ml-3 tags" *ngFor=" let tags of productInfo.tags">
+          <span class="badge badge-secondary">{{tags}}</span>
+        </div>
+  
+        <div class="d-flex align-items-center mt-3">
+          <button class="btn btn-outline-secondary btn-sm mr-2" (click)="decreaseQty()">-</button>
+          <input type="text" class="form-control form-control-sm text-center w-25" [value]="quantity" readonly>
+          <button class="btn btn-outline-secondary btn-sm ml-2" (click)="increaseQty()">+</button>
+          <button class="btn btn-primary btn-sm ml-3">Add to Cart</button>
+          <button (click)="toggleFavorite()" mat-icon-button>
+            <mat-icon color="warn">
+              {{ isFavorite ? 'favorite' : 'favorite_border' }}
+            </mat-icon>
+          </button>
+          
+        </div>
+  
+  
+      </div>
+  
+      <div class="col-12">
+        <!-- <mat-tab-group>
+          <mat-tab label="Details">
+            <p class="m-3">{{productObj.product_details}}</p>
+          </mat-tab>
+          <mat-tab label="specifiction">
+            <div  *ngFor="let specifiction of productObj.product_specifications">
+              <p>{{specifiction.specification_name}}</p>
+            </div>
+          </mat-tab>
+          <mat-tab label="Return Policy">
+            <p>{{productObj.return_policy}}</p>
+          </mat-tab>
+        </mat-tab-group> -->
+      </div>
+    </div>
+  </div>

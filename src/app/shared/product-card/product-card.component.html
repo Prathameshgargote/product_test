@@ -1,0 +1,146 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-2 col-md-4 hover-card mt-2" *ngFor=" let Prod of proArr">
+      <!-- <mat-card class="prod-card">
+        <div class="">
+          <div class="img-content">
+            <img [src]="Prod.images" class="img-fluid img  img mb-3" [alt]="Prod.title" [title]="Prod.title">
+          </div>
+          <mat-card-subtitle>{{Prod.category}} </mat-card-subtitle>
+          <div class="">
+            <a href="" routerLink="">
+              <strong>
+                <h3 class="">{{Prod.title}}</h3>
+              </strong>
+            </a>
+          </div>
+          <mat-card-content class="">
+            <h2> <strong>{{Prod.total_price}} </strong> </h2>
+          </mat-card-content>
+
+        </div>
+
+
+      </mat-card> -->
+      <div class="card " [routerLink]="['product',Prod._id]" style="width: 18rem;">
+        <div class="card-body ">
+         <div class="imge">
+          <img [src]="Prod.images" class=" img " [alt]="Prod.title">
+         </div>
+          <div class="catagory">{{Prod.category}}</div>
+          <strong>
+              <div class="title text-info  "><h3 class=""> {{Prod.title}}</h3></div>
+          </strong>
+          <h3>
+            <strong>
+              {{Prod.total_price}}
+            </strong>
+          </h3>
+        </div>
+      </div>
+
+      <div class="hover-buttons">
+
+        <button mat-mini-fab color="primary" matTooltip="Add to Bag"  matTooltipPosition="left" aria-label="Add to Bag">
+          <mat-icon>shopping_bag</mat-icon>
+        </button>
+
+        <button mat-mini-fab color="primary" matTooltip="View Details"  matTooltipPosition="left" aria-label="View Details">
+          <mat-icon>visibility</mat-icon>
+        </button>
+
+        <button mat-mini-fab color="accent" matTooltip="Like"  matTooltipPosition="left" aria-label="Like">
+          <mat-icon>favorite</mat-icon>
+        </button>
+
+        <button mat-mini-fab color="warn" matTooltip="Random"  matTooltipPosition="left" aria-label="Random">
+          <mat-icon>shuffle</mat-icon>
+        </button>
+
+      </div>
+      <!-- <div class="card">
+              <div class="card-header">
+                  {{userInfo.userName}}
+              </div>
+              <div class="card-body ">
+                  <img [src]="userInfo.userImg" class="img-fluid text-center" style=" object-fit: cover;" [alt]="userInfo.userName">
+                  <p>User Role:{{userInfo.userRole}}</p>
+              </div>
+              <div class="card-footer mt-5">
+                  <button mat-raised-button color="primary">Edit</button>
+                  <button mat-raised-buttoncolor="warn">Remove</button>
+              </div>
+          </div> -->
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container mt-4 d-flex justify-content-center">
+    <div class="row">
+      <div class="col-3 hover-card " *ngFor=" let Prod of proArr">
+        <mat-card class="mat-elevation-z6" style="max-width: 400px; width: 100%; border-radius: 16px;">
+          <mat-card-header>
+              <div mat-card-avatar class="user-avatar"></div>
+              <mat-card-title>{{ Prod.title| titlecase }}</mat-card-title>
+              <mat-card-subtitle>{{ Prod.rating }}</mat-card-subtitle>
+            </mat-card-header>
+          
+            <img mat-card-image [src]="Prod.images[1]" alt="User Image" />
+          
+            <mat-card-content class="mt-2">
+              <p><strong>User ID:</strong> {{Prod.rating }}</p>
+            </mat-card-content>
+          
+            <div class="hover-buttons d-flex align-item-right">
+              <button mat-icon-button color="primary" aria-label="View">
+                <mat-icon>visibility</mat-icon>
+              </button>
+              <button mat-icon-button color="accent" aria-label="Like">
+                <mat-icon>favorite</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" aria-label="Home">
+                <mat-icon>home</mat-icon>
+              </button>
+            </div>
+            
+          </mat-card>
+      </div>
+  
+  </div>
+    </div> -->
+
+
+
+
+<!-- <div class="card-container mt-5"></div>
+    <div class="card hover-card shadow-sm">
+      <img [src]="prod.images[1]" class="card-img-top" alt="Card image">
+      <div class="card-body">
+        <h5 class="card-title">Card Title</h5>
+        <p class="card-text">This is some example content inside the card.</p>
+      </div> -->
+
+<!-- Hover Buttons -->
+<!-- <div class="hover-buttons d-flex align-item-right">
+        <button mat-icon-button color="primary" aria-label="View">
+          <mat-icon>visibility</mat-icon>
+        </button>
+        <button mat-icon-button color="accent" aria-label="Like">
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" aria-label="Home">
+          <mat-icon>home</mat-icon>
+        </button>
+      </div>
+    </div> -->
