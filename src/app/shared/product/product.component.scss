@@ -1,0 +1,110 @@
+*{
+    background-color: #f4f1f1;
+}
+.image {
+    height: 500px;
+    width: 500px;
+    margin-left: 10%;
+
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+    }
+}
+
+.smimmg {
+    display: inline-block;
+}
+
+// .lgimg{
+//     height: ;
+// }
+.smImg {
+
+    height: 100px;
+    width: 100px;
+    margin-top: 10px;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        overflow: hidden;
+        cursor: pointer;
+    }
+}
+
+.smallimg {
+    margin-left: 30px;
+}
+
+.specification_name {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.specification_value {
+    list-style: none;
+}
+
+.specification {
+    margin: 0;
+    padding: 0;
+}
+
+.spefcific {
+    margin-bottom: 10px;
+}
+
+.description_name {
+    margin: 0;
+    padding: 1.9%;
+}
+
+.description {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.shipping {
+    border-style: none;
+}
+.free_ship{
+    display: flex;
+  margin: 3px;
+}
+
+.button {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: transparent;
+}
+
+.input-control {
+    width: 20px;
+    border-style: none;
+}
+.qauntity{
+    font-size: 15px;
+    margin: 8px;
+}
+.Addbutton{
+    width: 90%;
+    margin-bottom:5px;
+    mat-icon{
+        background-color: transparent;
+    }
+}
+// .button-group{
+//     display: block;
+//     align-items: center;
+// }
+
+.card{
+    padding: 15px;
+    margin-top: 20px;
+
+}

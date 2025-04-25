@@ -10,9 +10,15 @@ import { ProductService } from '../services/product.service';
 })
 export class ProductComponent implements OnInit {
 
+
+
+
+
+
   productId!:string
   productInfo!:Iproduct
-
+  productImgs!:Array<string>
+  // smImg !: string
   isFavorite = false;
   quantity: number = 1
   constructor(
@@ -27,6 +33,9 @@ export class ProductComponent implements OnInit {
    .subscribe(res=>{
     console.log(res);
     this.productInfo=res
+    this.productImgs=res.images
+    // console.log(this.productImgs);
+    
   })
   }
 
@@ -44,5 +53,13 @@ export class ProductComponent implements OnInit {
   toggleFavorite() {
     this.isFavorite = !this.isFavorite;
   }
+
+onclickSmImg(img:string){
+  console.log(img);
+  this.productInfo.images[0]=img
+  // this.smImg=img
+// this.smImg=[...this.productInfo.images].toString()
+}
+ 
 
 }

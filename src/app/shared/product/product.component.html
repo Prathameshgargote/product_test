@@ -1,43 +1,142 @@
-<div class="container">
-    <div class="row">
-  
-      <div class="col-6">
-        <img [src]="productInfo.images" [alt]="productInfo.title" class="img-fluid img m-2">
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-md-4">
+      <div class="row">
+        <div class="image"><img [src]="productInfo.images[0]" [alt]="productInfo.title" class="img-fluid "></div>
       </div>
-      <div class="col-6">
-  
-        <h2 class="card-title font-weight-bold">{{productInfo.title}} </h2>
-        <p class="text-warning mb-1"> <small
-            class="text-muted font-weight-bold">★{{productInfo.rating}}({{productInfo.reviews_count}})</small>
+      <div class="row smallimg">
+        <div class="col-md-2.offset-md-1 smimmg mr-2 " *ngFor=" let smImg of productImgs.slice(1,5)">
+          <div class="card smImg ">
+            <img [src]="smImg" alt="" (click)="onclickSmImg(smImg)">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <div class="details mt-5">
+        <span class="text-info"> {{productInfo.category}}/{{productInfo.subcategory}}</span>
+        <div class="prodcut-title mt-3">
+          <h1>
+            <b>{{productInfo.title}}</b>
+          </h1>
+        </div>
+        <div class="product-ratring-detail d-flex mb-4">
+          <div class="col-3">p</div>
+          <div class="col-3">Reviews({{productInfo.reviews_count}})</div>
+          <div class="col-3">Sold: <strong>123</strong></div>
+          <div class="col-3"><a href="">View Shop </a></div>
+        </div>
+        <hr>
+        <div class="col-12">
+          <h1 class="mb-0"><b class="text-danger">{{productInfo.total_price}}</b></h1>
+        </div>
+        <hr>
+        <div class="specification  d-flex flex-fill">
+          <ng-container *ngIf="productInfo.product_specifications;else onspecification">
+            <ul class="specification_name">
+              <li class="spefcific mb-3" *ngFor="let name  of productInfo.product_specifications">
+                <span><b>{{name.specification_name}} : </b>{{name.specification_value}}</span>
+              </li>
+            </ul>
+          </ng-container>
+
+          <ng-template #onspecification>
+            <p class="alert alert-info w-100">
+              Not specification is Available.
+            </p>
+          </ng-template>
+
+
+        </div>
+        <hr>
+        <div class="about-product">
+          <H1><b>About this item</b></H1>
+          <ng-container *ngIf="productInfo.product_description ;else Ondescription">
+            <ul class="description_name">
+              <li class="description" *ngFor="let description of productInfo.product_description">
+                {{description}}
+              </li>
+            </ul>
+          </ng-container>
+          <ng-template #Ondescription>
+            <p class="alert alert-info alert-sm">
+              Not product About  is available
+            </p>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card">
+        <h2 class="text-danger"><b>{{productInfo.total_price}}</b></h2>
+
+        <div class="free_ship"><mat-icon>local_shipping</mat-icon>
+          <p> Free Shipping</p>
+        </div>
+
+        <p>Shipping To : <select class="shipping">
+            <option value="home">Home</option>
+            <option value="office">Office</option>
+          </select>
         </p>
-        <h3 class="text-primary ">{{productInfo.total_price}}</h3>
-  
-        <div class="row " *ngFor=" let specifiction of productInfo.product_description">
-          <div class="col-md-1"><mat-icon style="color: greenyellow;" class="bgcolor">check</mat-icon></div>
-          <div class="col-md-11">{{specifiction}}</div>
+
+        <span>Quantity:
+          <button class="button" (click)="decreaseQty()">-</button>
+          <!-- <input type="text" [value]="quantity" class="input-control"> -->
+          <b class="qauntity">{{quantity}}</b>
+          <button class="button" (click)="increaseQty()">+</button>
+        </span>
+
+        <div class="button-group text-center mt-3 ">
+          <button mat-raised-button color="warn" class="Addbutton">Add To Cart
+            <mat-icon>shopping_cart</mat-icon></button>
+          <button mat-raised-button color="warn" class="Addbutton" style="background-color: #333e46;">Accent</button>
         </div>
-        <!-- <div class="ml-3 tags" *ngFor=" let tags of productInfo.tags">
-          <span class="badge badge-secondary">{{tags}}</span>
-        </div> -->
-  
-        <div class="d-flex align-items-center mt-3">
-          <button class="btn btn-outline-secondary btn-sm mr-2" (click)="decreaseQty()">-</button>
-          <input type="text" class="form-control form-control-sm text-center w-25" [value]="quantity" readonly>
-          <button class="btn btn-outline-secondary btn-sm ml-2" (click)="increaseQty()">+</button>
-          <button class="btn btn-primary btn-sm ml-3">Add to Cart</button>
-          <button (click)="toggleFavorite()" mat-icon-button>
-            <mat-icon color="warn">
-              {{ isFavorite ? 'favorite' : 'favorite_border' }}
-            </mat-icon>
-          </button>
-          
+        <div class="return-policy">
+          <span>Datails:</span>
+
+          <!-- <span>Return Policy: <p>{{productInfo.return_policy}}</p></span> -->
+          <ng-container *ngIf="productInfo.return_policy;else Ondetail">
+            <span>Return Policy: <p>{{productInfo.return_policy}}</p></span>
+          </ng-container>
+          <ng-template #Ondetail>
+            <p class="alert alert-info alert-sm">
+              Not Return policy is available
+            </p>
+          </ng-template>
         </div>
-  
-  
       </div>
-  
-      <div class="col-12">
-        <!-- <mat-tab-group>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="col-12"> -->
+<!-- <mat-tab-group>
           <mat-tab label="Details">
             <p class="m-3">{{productObj.product_details}}</p>
           </mat-tab>
@@ -50,6 +149,38 @@
             <p>{{productObj.return_policy}}</p>
           </mat-tab>
         </mat-tab-group> -->
-      </div>
-    </div>
-  </div>
+<!-- </div> -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- <h2 class="card-title font-weight-bold">{{productInfo.title}} </h2> -->
+<!-- <p class="text-warning mb-1"> <small
+      class="text-muted font-weight-bold">★{{productInfo.rating}}({{productInfo.reviews_count}})</small>
+  </p> -->
+<!-- <h3 class="text-primary ">{{productInfo.total_price}}</h3> -->
+
+<!-- <div class="row " *ngFor=" let specifiction of productInfo.product_description">
+    <div class="col-md-1"><mat-icon style="color: greenyellow;" class="bgcolor">check</mat-icon></div>
+    <div class="col-md-11">{{specifiction}}</div>
+  </div> -->
+<!-- <div class="ml-3 tags" *ngFor=" let tags of productInfo.tags">
+    <span class="badge badge-secondary">{{tags}}</span>
+  </div> -->
+<!-- <div class="d-flex align-items-center mt-3">
+    <button class="btn btn-outline-secondary btn-sm mr-2" (click)="decreaseQty()">-</button>
+    <input type="text" class="form-control form-control-sm text-center w-25" [value]="quantity" readonly>
+    <button class="btn btn-outline-secondary btn-sm ml-2" (click)="increaseQty()">+</button>
+    <button class="btn btn-primary btn-sm ml-3">Add to Cart</button>
+    <button (click)="toggleFavorite()" mat-icon-button>
+      <mat-icon color="warn">
+        {{ isFavorite ? 'favorite' : 'favorite_border' }}
+      </mat-icon>
+    </button> -->
