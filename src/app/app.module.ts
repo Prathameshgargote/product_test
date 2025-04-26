@@ -8,14 +8,16 @@ import { ProductCardComponent } from './shared/product-card/product-card.compone
 import { MaterialModule } from './material/material.module';
 import { ProductComponent } from './shared/product/product.component';
 import { HomeComponent } from './shared/home/home.component';
-import {HttpClientModule}from '@angular/common/http'
+import {HttpClientModule}from '@angular/common/http';
+import { NavbarComponent } from './shared/navbar/navbar.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductCardComponent,
     ProductComponent,
-    HomeComponent
+    HomeComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
