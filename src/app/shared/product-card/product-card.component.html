@@ -25,7 +25,10 @@
       <div class="card " [routerLink]="['product',Prod._id]" style="width: 18rem;">
         <div class="card-body ">
          <div class="imge">
-          <img [src]="Prod.images" class=" img " [alt]="Prod.title">
+          <img 
+          (mouseenter)="hoverproduct=Prod"
+          (mouseleave)="hoverproduct=null"
+          [src]="hoverproduct===Prod? Prod.images[1]:Prod.images[0]" class=" img " [alt]="Prod.title">
          </div>
           <div class="catagory">{{Prod.category}}</div>
           <strong>
